@@ -4,58 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calculator
+
+Console.WriteLine("Welcome to the To-Do List App!");
+List<string> taskList = new List<string>();
+string option = "";
+
+while (option != "e")
 {
+    Console.WriteLine("What woukd you like to do?");
+    Console.WriteLine("Enter 1 to add task to the list.");
+    Console.WriteLine("Enter 2 to remove a task.");
+    Console.WriteLine("Enter 3 to view the list.");
+    Console.WriteLine("Enter e to exit the app.");
 
-    class Program
+    option = Console.ReadLine();
+
+    if (option == "1")
     {
-        static void Main(string[] args)
+        Console.WriteLine("Please enter the name of the task to add to the list");
+        string task = Console.ReadLine();
+        taskList.Add(task);
+        Console.WriteLine($"Task successfully added to the list.");
+    }
+    else if (option=="2")
+    {
+        for (int i = 0; i < taskList.Count; i++)
         {
-            int num1;
-            int num2;
-
-            int result;
-            string answer;
-
-            Console.WriteLine("Welcome to the Calculator!");
-            Console.WriteLine("Enter your first number:");
-            num1 = Convert.ToInt32( Console.ReadLine());
-
-            Console.WriteLine("Please enter your second number");
-
-            num2 = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("What type of operation would you like to perform ?");
-            Console.WriteLine("Please enter a for addition, s for subtraction, m for multiplication or d for division");
-
-            answer = Console.ReadLine();
-
-            if (answer == "a")
-            {
-               result = (num1 + num2);
-            }
-            else if (answer == "s")
-            {
-                result = (num1 - num2);
-            }
-            else if (answer == "m")
-            {
-                result = (num1 * num2);
-            }
-            else if (answer == "d")
-            {
-                result = (num1 / num2);
-            }
-            else
-            {
-                result = 0;
-                Console.WriteLine("Invalid input");
-            }
-
-            Console.WriteLine("The result is: " + result);
-            Console.WriteLine("Thank you for using the calculator!");   
-            Console.ReadKey();
+            Console.WriteLine(i + " : " + taskList[i]);
         }
+        Console.WriteLine("Please enter the number of the task you would like to remove from the list.");
+        int taskNum = Convert.ToInt32(Console.ReadLine());
+        taskList.RemoveAt(taskNum);
+    }
+    else if (option == "3")
+    {
+        Console.WriteLine("Here is your current to-do list:");
+        for (int i = 0; i
+            < taskList.Count; i++)
+        {
+            Console.WriteLine(i + " : " + taskList[i]);
+        }
+
+    }
+    else if (option == "e")
+    {
+        Console.WriteLine("Thank you for using the To-Do List App! Goodbye!");
+    }
+    else
+    {
+        Console.WriteLine("Invalid option. Please try again.");
     }
 }
-
+Console.WriteLine("Thank you for using the To-Do List App! Goodbye!");
